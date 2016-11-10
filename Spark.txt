@@ -1,0 +1,10 @@
+########Copy data from MySQL to local file system
+#Enable file_priv to retail_dba
+mysql -u root -p #if password enabled, else "mysql -u root"
+update mysql.user set file_priv = 'Y' where user = 'retail_dba';
+commit;
+exit;
+#On OS prompt, run
+service mysqld restart
+mysql -u retail_dba -p #prompts for password and launches mysql CLI
+use retail_db;
